@@ -3,7 +3,6 @@ module.exports = {
 }
 
 function UpdateTodoById(req, res){
-  var start = monitor();
   client.update({
     index: 'todo',
     type: 'todo',
@@ -18,7 +17,6 @@ function UpdateTodoById(req, res){
       res.end(JSON.stringify(error));
     } else {
       res.end();
-      monitor(start, 'UpdateTodoById');
     }
   });
 }

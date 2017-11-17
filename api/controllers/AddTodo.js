@@ -3,7 +3,6 @@ module.exports = {
 }
 
 function AddTodo(req, res){
-  var start = monitor();
   client.create({
     index: 'todo',
     type: 'todo',
@@ -18,7 +17,6 @@ function AddTodo(req, res){
     } else {
       console.log(JSON.stringify({'id': req.swagger.params.todo.value.todo_id}));
       res.end(JSON.stringify({'id': req.swagger.params.todo.value.todo_id}));
-      monitor(start, 'AddTodo');
     }
   })
 }

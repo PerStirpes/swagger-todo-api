@@ -3,7 +3,6 @@ module.exports = {
 };
 
 function GetAllTodos(req, res) {
-  var start = monitor();
   client.search({
     index:'todo',
     type: 'todo',
@@ -17,7 +16,6 @@ function GetAllTodos(req, res) {
       results = response.hits.hits.map(function(hit){ return hit._source });
       res.header('Content-Type', 'application/json');
       res.end(JSON.stringify(results));
-      monitor(start, 'GetAllTodos');
     }
   });
 }

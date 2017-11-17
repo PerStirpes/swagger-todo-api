@@ -3,7 +3,6 @@ module.exports = {
 }
 
 function DeleteTodoById(req, res) {
-  var start = monitor();
   console.log(`Deleting todo with id ${req.swagger.params.id.value}`);
   client.delete({
     index: 'todo',
@@ -15,7 +14,6 @@ function DeleteTodoById(req, res) {
       res.end(JSON.stringify(error));
     } else {
       res.end(JSON.stringify(response));
-      monitor(start, 'DeleteTodoById');
     }
   });
 }
